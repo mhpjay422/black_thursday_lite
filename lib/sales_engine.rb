@@ -19,15 +19,26 @@ class SalesEngine
     CSV.foreach(self.file_names[:merchants], headers:true) do |row|
       rowhash = row.to_hash
 
-      arr << Merchant.new({:id => rowhash['id']}, {:name => rowhash['name']})
+      arr << Merchant.new(:id => rowhash['id'], :name => rowhash['name'])
     end
     
-
     MerchantCollection.new(arr)
   end  
 
   def item_collection 
-    # CSV.foreach(file, headers:true) do |row|
-    # end
+    arr = []
+    CSV.foreach(self.file_names[:items], headers:true) do |row|
+      # require "pry"; binding.pry
+      rowhash = row.to_hash
+      arr << Item.new({
+        :id => rowhash['id'], 
+        :name => rowhash['name'],
+        :description => rowhash['description'],
+        :unit_price => rowhash['unit_price'],
+        :merchant_id => rowhash['merchant_id'],
+        })
+      end
+      
+    ItemCollection.new(arr)
   end
-end
+end 

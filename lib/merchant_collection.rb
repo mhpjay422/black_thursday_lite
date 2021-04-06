@@ -11,7 +11,6 @@ class MerchantCollection
   end
   
   def find(idx)
-    # require "pry"; binding.pry
-    @merchants.find {|merc| merc.id[:id] == idx.to_s }
+    merchants.find {|merc| merc.id == idx.to_s }
   end
 end

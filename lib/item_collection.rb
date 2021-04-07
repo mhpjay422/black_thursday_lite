@@ -10,7 +10,17 @@ class ItemCollection
     items
   end
 
-  def where(merchant_id)
-    items.find {|item| item.merchant_id == merchant_id}
+  def where(hash)
+    found = items.select do |item| 
+      case hash.keys
+      when [:merchant_id]
+        item.merchant_id == hash.values[0].to_s      
+      when [:name]
+        item.name == hash.values[0]          
+      when [:price]
+        item.unit_price == hash.values[0].to_s            
+      end  
+    end
+    found
   end
 end

@@ -32,6 +32,5 @@ class MerchantCollection
   def destroy(id)
     index = @merchants.index {|merc| merc.id == id.to_s}
     @merchants.delete_at(index)
-    require "pry";binding.pry
   end
 end

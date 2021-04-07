@@ -11,7 +11,11 @@ item_collection = sales_engine.item_collection
 merchants = merchant_collection.all
 merchant = merchant_collection.find(12334105)
 item_all = item_collection.all
-items = item_collection.where(merchant.id) 
+# items = item_collection.where(merchant.id) 
 merchant_create = merchant_collection.create({name: "jon"}) 
 merchant_update = merchant_collection.update({id: '12334105', name: 'New Merchant Name'})
 merchant_destroy = merchant_collection.destroy(12334105)
+all_pencils = item_collection.where({merchant_id: 12334141})
+all_pencils = item_collection.where({name: 'Dutch Elm Bowl'})
+all_fifty_cent_items = item_collection.where({price: 1200})
+require "pry"; binding.pry

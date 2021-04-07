@@ -2,6 +2,7 @@ require 'CSV'
 
 class MerchantCollection
   attr_reader :merchants
+  attr_accessor :update
   def initialize(merchants)
     @merchants = merchants
   end
@@ -23,7 +24,9 @@ class MerchantCollection
   end
 
   def update(data) 
-    # require "pry";binding.pry
+    index = @merchants.index {|merc| merc.id == data[:id].to_s}
+    @merchants[index] = Merchant.new(data)
+    @merchants[index]
   end
 
   def destroy

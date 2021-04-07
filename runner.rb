@@ -13,3 +13,4 @@ merchant = merchant_collection.find(12334105)
 item_all = item_collection.all
 items = item_collection.where(merchant.id) 
 merchant_create = merchant_collection.create({name: "jon"}) 
+merchant_update = merchant_collection.update({id: 12334105, name: 'New Merchant Name'})

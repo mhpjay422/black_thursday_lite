@@ -2,7 +2,6 @@ require 'CSV'
 
 class MerchantCollection
   attr_reader :merchants
-  attr_accessor :update
   def initialize(merchants)
     @merchants = merchants
   end

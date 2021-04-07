@@ -24,12 +24,14 @@ class MerchantCollection
   end
 
   def update(data) 
-    index = @merchants.index {|merc| merc.id == data[:id].to_s}
+    index = @merchants.index {|merc| merc.id == data[:id]}
     @merchants[index] = Merchant.new(data)
     @merchants[index]
   end
 
-  def destroy
-
+  def destroy(id)
+    index = @merchants.index {|merc| merc.id == id.to_s}
+    @merchants.delete_at(index)
+    require "pry";binding.pry
   end
 end
